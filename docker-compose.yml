@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  database:
+    restart: always
+    image: "postgres:16-alpine"
+
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_PORT=9980 # Добавлено
+
+    ports:
+      - ${DB_PORT}:9980 # Изменено
+
+    volumes:
+      - ${POSTGRES_DATA_VOLUME}:/var/lib/postgresql/data
+
+    command: postgres -c "port=9980" # Добавлено
+
+    networks:
+      - local_net
+  telegram_bot:
+    build: .
+    restart: always
+    environment:
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - DB_HOST=database
+      - DB_PORT=9980 # Добавлено
+    depends_on:
+      - database
+    networks:
+      - local_net
+
+networks:
+  local_net:
+    driver: bridge
