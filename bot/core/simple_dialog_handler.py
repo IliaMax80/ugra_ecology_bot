@@ -68,12 +68,6 @@ class DialogStep(DialogEntityMixin, abc.ABC):
 
 
 class DialogContextStep(DialogStep):
-    """
-    Шаг диалога, записывающий ответ пользователя в state (можно получить через collect_dialog_data)
-
-    также позволяет валидировать ответ пользователя, переопределяя функцию validate_user_data
-    """
-
     async def handle(self, message: Message, state: FSMContext):
         user_data = await self.validate_user_data(message, state)
         # noinspection PyProtectedMember
@@ -82,10 +76,6 @@ class DialogContextStep(DialogStep):
         await state.update_data(**{key: user_data})
 
     async def validate_user_data(self, message: Message, state: FSMContext)->Any:
-        """
-
-        :raises DialogError: при некорректных данных от пользователя
-        """
         return message.text
 
 
@@ -160,9 +150,6 @@ class SimpleDialog:
         await state.update_data(**{self._build_dialog_data_key(key): value})
 
     async def collect_dialog_data(self, state: FSMContext) -> dict[StateName, Any]:
-        """
-        Получает все введённые пользователем данные в формате {названиеШага: текст пользователя}
-        """
         current_data = await state.get_data()
         cleared = {self._extract_orig_key(k): v for k, v in current_data.items() if k.startswith(self.name)}
 
