@@ -52,7 +52,6 @@ async def decline(callback: CallbackQuery, button: Button,
     async with db_async_session_manager() as session:
         async with session.begin():
             try:
-                # Assuming that 'point' is an instance of PointRequest
                 if point:
                     await session.delete(point)
                     manager.dialog_data["point"] = None
@@ -97,7 +96,6 @@ async def save(callback: CallbackQuery, button: Button, manager: DialogManager):
     async with db_async_session_manager() as session:
         async with session.begin():
             try:
-                # Assuming that 'point' is an instance of PointRequest
                 if point:
                     await session.delete(point)
                     manager.dialog_data["point"] = None
