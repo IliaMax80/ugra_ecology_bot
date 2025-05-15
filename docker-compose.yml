@@ -9,15 +9,15 @@ services:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}
-      - POSTGRES_PORT=9980 # Добавлено
+      - POSTGRES_PORT=9980
 
     ports:
-      - ${DB_PORT}:9980 # Изменено
+      - ${DB_PORT}:9980
 
     volumes:
       - ${POSTGRES_DATA_VOLUME}:/var/lib/postgresql/data
 
-    command: postgres -c "port=9980" # Добавлено
+    command: postgres -c "port=9980"
 
     networks:
       - local_net
@@ -29,7 +29,7 @@ services:
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_NAME=${DB_NAME}
       - DB_HOST=database
-      - DB_PORT=9980 # Добавлено
+      - DB_PORT=9980
     depends_on:
       - database
     networks:
