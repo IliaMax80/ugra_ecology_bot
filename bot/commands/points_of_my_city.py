@@ -22,7 +22,6 @@ points_of_city_router = Router(name='points')
 
 commands_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Open the 'points.json' file using its absolute pat
 
 waste_select = Multiselect(
     Format("✓ {item[0]}"),
