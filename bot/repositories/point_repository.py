@@ -8,10 +8,6 @@ from utils.utils import to_snake
 
 
 class PointRepository:
-    """
-    Отвечает за работу с данными о точках
-    """
-
     def __init__(self):
         self.logger = logging.getLogger(to_snake(self.__class__.__name__))
 
