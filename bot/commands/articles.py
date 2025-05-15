@@ -52,11 +52,10 @@ async def on_article_selected(callback: CallbackQuery, widget: Any,
 
 
 kbd = Select(
-    Format("{item[0]}"),  # E.g `✓ Apple (1/4)`
+    Format("{item[0]}"),
     id="s_articles",
     item_id_getter=operator.itemgetter(1),
-    # each item is a tuple with id on a first position
-    items="titles",  # we will use items from window data at a key `fruits`
+    items="titles",
     on_click=on_article_selected,
 )
 
