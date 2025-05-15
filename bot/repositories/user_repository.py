@@ -9,11 +9,7 @@ from schemas.user import UserInit, UserShort, UserAbout
 from utils.utils import to_snake
 
 
-class UserRepository:
-    """
-    Отвечает за работу с данными пользователя
-    """
-
+class UserRepository
     def __init__(self):
         self.logger = logging.getLogger(to_snake(self.__class__.__name__))
 
