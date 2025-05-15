@@ -58,4 +58,4 @@ class UserRepository
         )
 
 
-user_repository = UserRepository()  # в случае с нормальным DI, этот объект бы создавался через него в отдельном месте, а не тут
+user_repository = UserRepository()
