@@ -12,8 +12,6 @@ class User(Base, TimestampMixin):
     name: Mapped[str | None] = mapped_column(String(256))
     surname: Mapped[str | None] = mapped_column(String(256))
     login: Mapped[str | None] = mapped_column(String(256))
-    chat_id: Mapped[int] = mapped_column(
-        BigInteger(), index=True, unique=True
-    )  # у telegram года так с 22го для id пользователей используется int64
+    chat_id: Mapped[int] = mapped_column(BigInteger(), index=True, unique=True)
     about: Mapped[dict | None] = mapped_column(JSONB())
     admin: Mapped[bool] = mapped_column(default=False)
