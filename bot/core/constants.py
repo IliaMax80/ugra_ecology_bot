@@ -8,8 +8,6 @@ class UserRole(str, enum.Enum):
     dummy = 'dummy'
 
 
-# перевод не занесён в значения enum'а, потому что на значения будет завязана логика приложения,
-# а перевод может в любой момент поменяться
 UserRoleTranslation = {
     UserRole.frontend_developer: 'frontend разработчик',
     UserRole.backend_developer: 'backend разработчик',
